@@ -1,0 +1,20 @@
+<div class="app-card" onclick="window.location.href='{{ app.url }}'">
+  <div class="app-icon">
+    <img src="{{ app.icon | default: '/assets/images/icons/default.png' }}" alt="{{ app.title }}" loading="lazy">
+  </div>
+  <div class="app-info">
+    <h3>{{ app.title }}</h3>
+    <div class="app-meta">
+      <span class="version">{{ app.version }}</span>
+      <span class="category">{{ app.category }}</span>
+    </div>
+    <div class="app-features">
+      {% for feature in app.features limit: 2 %}
+        <span class="feature">{{ feature }}</span>
+      {% endfor %}
+    </div>
+    <div class="download-count">
+      {{ app.downloads }} Downloads
+    </div>
+  </div>
+</div>
