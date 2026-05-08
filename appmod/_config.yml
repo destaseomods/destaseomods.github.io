@@ -1,1 +1,7 @@
 
+title: DSMODS Apps Store
+description: Download Premium Apps MOD APK Gratis
+baseurl: ""
+url: "https://destaseomods.github.io"
+paginate: 15
+paginate_path: "/apps/page:num/"
