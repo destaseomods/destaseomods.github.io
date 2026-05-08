@@ -1,1 +1,98 @@
+---
+layout: default
+---
+<article class="app-detail">
+  <!-- App Header -->
+  <div class="app-header">
+    <div class="app-icon-large">
+      <img src="{{ page.icon }}" alt="{{ page.title }}">
+    </div>
+    <div class="app-info-large">
+      <h1>{{ page.title }}</h1>
+      <div class="app-meta-large">
+        <span class="version">v{{ page.version }}</span>
+        <span class="size">{{ page.size }}</span>
+        <span class="category">{{ page.category }}</span>
+        <span class="downloads">{{ page.downloads }}</span>
+      </div>
+    </div>
+  </div>
 
+  <!-- Download Section -->
+  <div class="download-section">
+    {% include ads.html %}
+    <div class="download-buttons">
+      <a href="{{ page.mod_url }}" class="btn-primary btn-xl">
+        📥 Download MOD APK ({{ page.size }})
+      </a>
+      <a href="{{ page.original_url }}" class="btn-secondary btn-xl">
+        🔗 Play Store
+      </a>
+      <a href="{{ page.alt_url }}" class="btn-alt">
+        🌐 Mirror 1
+      </a>
+    </div>
+    {% include ads.html %}
+  </div>
+
+  <!-- Features -->
+  <section class="features-section">
+    <h2>✨ Fitur MOD Premium</h2>
+    <div class="features-grid">
+      {% for feature in page.features %}
+        <div class="feature-item">
+          <span class="feature-icon">{{ feature.icon | default: "⭐" }}</span>
+          <span>{{ feature.text }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="app-description">
+    <h2>ℹ️ Deskripsi</h2>
+    {{ content }}
+  </section>
+
+  <!-- Screenshots -->
+  {% if page.screenshots %}
+  <section class="screenshots-section">
+    <h2>📸 Screenshot</h2>
+    <div class="screenshot-slider">
+      {% for img in page.screenshots %}
+        <img src="{{ img }}" alt="Screenshot {{ forloop.index }}" loading="lazy">
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- Install Guide -->
+  <section class="install-guide">
+    <h2>📋 Cara Install MOD APK</h2>
+    <div class="steps">
+      <div class="step">
+        <span>1</span>
+        <p>Download file APK MOD di atas</p>
+      </div>
+      <div class="step">
+        <span>2</span>
+        <p>Enable "Unknown Sources" di Settings</p>
+      </div>
+      <div class="step">
+        <span>3</span>
+        <p>Install & Open App → Premium Unlocked!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Apps -->
+  <section class="related-section">
+    <h2>🔥 Apps Serupa</h2>
+    <div class="apps-grid">
+      {% assign related = site.apps | where_exp: "item", "item.id != page.id" | slice: 0,6 %}
+      {% for app in related %}
+        {% include app-card.html app=app %}
+      {% endfor %}
+    </div>
+  </section>
+</article>
